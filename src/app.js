@@ -10,7 +10,11 @@ app.use(cors());
 const repositories = [];
 
 app.get("/repositories", (request, response) => {
-  // TODO
+  if (repositories <= 0) {
+    return response.json({ error : 'Nenhum repositório cadastrado...' });
+  }  else {
+    return response.json(repositories);
+  };
 });
 
 app.post("/repositories", (request, response) => {
